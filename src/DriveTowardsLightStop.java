@@ -1,5 +1,6 @@
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.LightSensor;
+import com.cyberbotics.webots.controller.Robot;
 import javafx.scene.paint.Stop;
 
 public class DriveTowardsLightStop extends DifferentialWheels {
@@ -28,8 +29,8 @@ public class DriveTowardsLightStop extends DifferentialWheels {
                 getLightSensor("ls4"), getLightSensor("ls5"),
                 getLightSensor("ls6"), getLightSensor("ls7") };
 
-        for (int i = 0; i < lightSensors.length; i++) {
-            lightSensors[i].enable(10);
+        for (LightSensor lightSensor : lightSensors) {
+            lightSensor.enable(10);
         }
     }
 
