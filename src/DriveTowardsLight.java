@@ -6,7 +6,7 @@ public class DriveTowardsLight extends DifferentialWheels{
     private static int MAX_SPEED = 500;
     private static int MIN_SPEED = 0;
 
-    private static int MAX_SENSOR_VALUE = 3400;
+    private static int MAX_SENSOR_VALUE = 3300;
 
     private static int FRONT_RIGHT = 0;
     private static int FRONT_MIDDLE_RIGHT = 1;
@@ -34,6 +34,8 @@ public class DriveTowardsLight extends DifferentialWheels{
     }
 
     public static void main(String[] args) {
+        DriveTowardsLight controller = new DriveTowardsLight();
+        controller.run();
     }
 
     public void run() {
