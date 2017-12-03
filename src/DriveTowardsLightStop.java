@@ -1,13 +1,15 @@
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.LightSensor;
+import javafx.scene.paint.Stop;
 
-public class DriveTowardsLight extends DifferentialWheels{
+public class DriveTowardsLightStop extends DifferentialWheels {
     private static int TIME_STEP = 15;
-    private static int MAX_SPEED = 500;
+    private static int MAX_SPEED = 800;
     private static int MIN_SPEED = 0;
 
     private static int MAX_SENSOR_VALUE = 3200;
     private static int MAX_FRONT_SENSOR_VALUE = 2900;
+    private static int STOP_VALUE = 2850;
 
     private static int FRONT_RIGHT = 0;
     private static int FRONT_MIDDLE_RIGHT = 1;
@@ -17,11 +19,9 @@ public class DriveTowardsLight extends DifferentialWheels{
     private static int LEFT = 5;
     private static int FRONT_MIDDLE_LEFT = 6;
     private static int FRONT_LEFT = 7;
-
-
     private LightSensor[] lightSensors;
 
-    public DriveTowardsLight(){
+    public DriveTowardsLightStop(){
         super();
         lightSensors = new LightSensor[] { getLightSensor("ls0"), getLightSensor("ls1"),
                 getLightSensor("ls2"), getLightSensor("ls3"),
@@ -34,13 +34,15 @@ public class DriveTowardsLight extends DifferentialWheels{
     }
 
     public static void main(String[] args) {
-        DriveTowardsLight controller = new DriveTowardsLight();
+        DriveTowardsLightStop controller = new DriveTowardsLightStop();
         controller.run();
     }
 
     public void run() {
         while (step(TIME_STEP) != -1) {
-            if (lightSensors[FRONT_LEFT].getValue() < MAX_FRONT_SENSOR_VALUE &&
+            if (lightSensors[FRONT_LEFT].getValue() < STOP_VALUE || lightSensors[FRONT_RIGHT].getValue() < STOP_VALUE) {
+                stopDriving();
+            } else if (lightSensors[FRONT_LEFT].getValue() < MAX_FRONT_SENSOR_VALUE &&
                     lightSensors[FRONT_RIGHT].getValue() < MAX_FRONT_SENSOR_VALUE) {
                 driveStraightAhead();
             } else if (lightSensors[FRONT_MIDDLE_LEFT].getValue() < MAX_SENSOR_VALUE
@@ -55,6 +57,10 @@ public class DriveTowardsLight extends DifferentialWheels{
                 driveStraightAhead();
             }
         }
+    }
+
+    private void stopDriving() {
+        setSpeed(MIN_SPEED, MIN_SPEED);
     }
 
     private void driveToRight() {
