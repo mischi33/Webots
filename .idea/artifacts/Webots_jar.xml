@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Webots:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Webots_jar</output-path>
+    <root id="archive" name="Webots.jar">
+      <element id="module-output" name="Webots" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/Controller.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Controller" />
+    </root>
+  </artifact>
+</component>
