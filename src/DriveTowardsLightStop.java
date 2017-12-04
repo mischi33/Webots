@@ -1,16 +1,16 @@
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.LightSensor;
-import com.cyberbotics.webots.controller.Robot;
-import javafx.scene.paint.Stop;
+
 
 public class DriveTowardsLightStop extends DifferentialWheels {
     private static int TIME_STEP = 15;
     private static int MAX_SPEED = 800;
     private static int MIN_SPEED = 0;
 
-    private static int MAX_SENSOR_VALUE = 3200;
-    private static int MAX_FRONT_SENSOR_VALUE = 2900;
-    private static int STOP_VALUE = 2850;
+    private static int MAX_SENSOR_VALUE = 1300;
+    private static int MAX_FRONT_SENSOR_VALUE = 400;
+    private static int STOP_VALUE = 350;
+    private static int STOP_VALUE_2 = 1500;
 
     private static int FRONT_RIGHT = 0;
     private static int FRONT_MIDDLE_RIGHT = 1;
@@ -41,7 +41,8 @@ public class DriveTowardsLightStop extends DifferentialWheels {
 
     public void run() {
         while (step(TIME_STEP) != -1) {
-            if (lightSensors[FRONT_LEFT].getValue() < STOP_VALUE || lightSensors[FRONT_RIGHT].getValue() < STOP_VALUE) {
+            if ((lightSensors[FRONT_LEFT].getValue() < STOP_VALUE || lightSensors[FRONT_RIGHT].getValue() < STOP_VALUE)
+                    && (lightSensors[FRONT_MIDDLE_LEFT].getValue() > STOP_VALUE_2 && lightSensors[FRONT_MIDDLE_RIGHT].getValue() > STOP_VALUE_2)) {
                 stopDriving();
             } else if (lightSensors[FRONT_LEFT].getValue() < MAX_FRONT_SENSOR_VALUE &&
                     lightSensors[FRONT_RIGHT].getValue() < MAX_FRONT_SENSOR_VALUE) {

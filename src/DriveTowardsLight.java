@@ -3,11 +3,11 @@ import com.cyberbotics.webots.controller.LightSensor;
 
 public class DriveTowardsLight extends DifferentialWheels{
     private static int TIME_STEP = 15;
-    private static int MAX_SPEED = 500;
+    private static int MAX_SPEED = 800;
     private static int MIN_SPEED = 0;
 
-    private static int MAX_SENSOR_VALUE = 3200;
-    private static int MAX_FRONT_SENSOR_VALUE = 2900;
+    private static int MAX_SENSOR_VALUE = 1300;
+    private static int MAX_FRONT_SENSOR_VALUE = 400;
 
     private static int FRONT_RIGHT = 0;
     private static int FRONT_MIDDLE_RIGHT = 1;
