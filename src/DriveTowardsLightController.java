@@ -1,6 +1,4 @@
 public class DriveTowardsLightController extends RobotController {
-    //    private static double[][] controllerMatrix = {{0.5, 0.5, 0.5, 0.5},
-//            {0.5, 0.5, 0.5, 0.5}};
 
 
     private static double[] controllerMatrix = {0.5, 0.5};
@@ -14,8 +12,6 @@ public class DriveTowardsLightController extends RobotController {
 
     private void run() {
         while (step(TIME_STEP) != -1) {
-//            double[] speed = calcSpeed();
-//            setSpeedValues(speed[0], speed[1]);
             double left = calcSpeed(new String[] {"ls6", "ls7"});
             double right = calcSpeed(new String[] {"ls0", "ls1"});
             setSpeedValues(left, right);
@@ -27,20 +23,6 @@ public class DriveTowardsLightController extends RobotController {
         setSpeed(left, right);
     }
 
-//    private double[] calcSpeed() {
-//        double[] result = new double[controllerMatrix.length];
-//        for (int i = 0; i < controllerMatrix.length; i++) {
-//            double speed = 0;
-//            for (int j = 0; j < controllerMatrix[i].length; j++) {
-//                speed = speed + controllerMatrix[i][j] * lightSensors[i].getValue();
-//            }
-//            if (speed > 1000) {
-//                speed = 1000;
-//            }
-//            result[i] = speed;
-//        }
-//        return result;
-//    }
 
     private double calcSpeed(String[] sensors) {
         double speed = 0;
