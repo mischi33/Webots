@@ -22,6 +22,7 @@ public class DriveTowardsLight extends DriveController {
         controller.run();
     }
 
+
     public void run() {
         while (step(TIME_STEP) != -1) {
             if (lightSensors[FRONT_LEFT].getValue() < MAX_FRONT_SENSOR_VALUE &&
