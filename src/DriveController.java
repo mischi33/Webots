@@ -1,13 +1,10 @@
 
 import com.cyberbotics.webots.controller.DifferentialWheels;
 
-public class DriveController extends DifferentialWheels {
+public class DriveController extends RobotController {
     protected static int TIME_STEP = 15;
     protected static int MAX_SPEED = 800;
     protected static int MIN_SPEED = 0;
-
-    protected static int MAX_SENSOR_VALUE = 1300;
-    protected static int MAX_FRONT_SENSOR_VALUE = 400;
 
     protected static int FRONT_RIGHT = 0;
     protected static int FRONT_MIDDLE_RIGHT = 1;
