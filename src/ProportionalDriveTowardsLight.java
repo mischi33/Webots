@@ -10,7 +10,7 @@ public class ProportionalDriveTowardsLight extends ProportionalController {
     }
 
 
-    private void run() {
+    public void run() {
         while (step(TIME_STEP) != -1) {
             double left = calcSpeed(new String[] {"ls6", "ls7"});
             double right = calcSpeed(new String[] {"ls0", "ls1"});

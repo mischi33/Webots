@@ -14,7 +14,7 @@ public class ProportionalDriveTowardsLightStop extends RobotController {
         controller.run();
     }
 
-    private void run() {
+    public void run() {
         while (step(TIME_STEP) != -1) {
             double left = calcSpeed(new String[]{"ls7"});
             double right = calcSpeed(new String[]{"ls0"});
