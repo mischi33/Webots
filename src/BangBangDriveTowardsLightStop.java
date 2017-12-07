@@ -1,22 +1,16 @@
-
-
-import com.cyberbotics.webots.controller.DifferentialWheels;
-import com.cyberbotics.webots.controller.LightSensor;
-
-
-public class DriveTowardsLightStop extends DriveController {
+public class BangBangDriveTowardsLightStop extends BangBangController {
     private static int STOP_VALUE = 350;
     private static int STOP_VALUE_2 = 1500;
     protected static int MAX_SENSOR_VALUE = 1300;
     protected static int MAX_FRONT_SENSOR_VALUE = 400;
 
-    public DriveTowardsLightStop(){
+    public BangBangDriveTowardsLightStop(){
         super();
         initLightSensors(new String[]{"ls6", "ls7", "ls0", "ls1"});
     }
 
     public static void main(String[] args) {
-        DriveTowardsLightStop controller = new DriveTowardsLightStop();
+        BangBangDriveTowardsLightStop controller = new BangBangDriveTowardsLightStop();
         controller.run();
     }
 

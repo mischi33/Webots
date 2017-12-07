@@ -22,6 +22,7 @@ public class RobotController extends DifferentialWheels {
     }
 
     protected void initDistanceSensors(String[] sensorNames) {
+        distanceSensors = new DistanceSensor[sensorNames.length];
         for (int i = 0; i < sensorNames.length; i++) {
             distanceSensors[i] = getDistanceSensor(sensorNames[i]);
         }

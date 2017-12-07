@@ -1,7 +1,7 @@
 
 import com.cyberbotics.webots.controller.DifferentialWheels;
 
-public class DriveController extends RobotController {
+public class BangBangController extends RobotController {
     protected static int TIME_STEP = 15;
     protected static int MAX_SPEED = 800;
     protected static int MIN_SPEED = 0;

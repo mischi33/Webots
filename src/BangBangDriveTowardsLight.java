@@ -1,18 +1,14 @@
-
-
-import com.cyberbotics.webots.controller.LightSensor;
-
-public class DriveTowardsLight extends DriveController {
+public class BangBangDriveTowardsLight extends BangBangController {
     protected static int MAX_SENSOR_VALUE = 1300;
     protected static int MAX_FRONT_SENSOR_VALUE = 400;
 
-    public DriveTowardsLight(){
+    public BangBangDriveTowardsLight(){
         super();
         initLightSensors(new String[]{"ls6", "ls7", "ls0", "ls1"});
     }
 
     public static void main(String[] args) {
-        DriveTowardsLight controller = new DriveTowardsLight();
+        BangBangDriveTowardsLight controller = new BangBangDriveTowardsLight();
         controller.run();
     }
 

@@ -1,9 +1,9 @@
-public class DriveTowardsLightController extends RobotController {
+public class ProportionalDriveTowardsLight extends ProportionalController {
 
 
-    private static double[] controllerMatrix = {0.5, 0.5};
+    private static double controllerValue = 0.5;
 
-    public DriveTowardsLightController() {
+    public ProportionalDriveTowardsLight() {
         super();
         String[] sensorNames = new String[]{"ls6", "ls7", "ls0", "ls1"};
         initLightSensors(sensorNames);
@@ -19,15 +19,10 @@ public class DriveTowardsLightController extends RobotController {
 
     }
 
-    private void setSpeedValues(double left, double right) {
-        setSpeed(left, right);
-    }
-
-
     private double calcSpeed(String[] sensors) {
         double speed = 0;
-        for (int i = 0; i < sensors.length; i ++) {
-            speed = speed + controllerMatrix[i] * getLightSensor(sensors[i]).getValue();
+        for (String sensor : sensors) {
+            speed = speed + controllerValue * getLightSensor(sensor).getValue();
         }
         if (speed > 1000) {
             speed = 1000;
@@ -36,7 +31,7 @@ public class DriveTowardsLightController extends RobotController {
     }
 
     public static void main(String[] args) {
-        DriveTowardsLightController controller = new DriveTowardsLightController();
+        ProportionalDriveTowardsLight controller = new ProportionalDriveTowardsLight();
         controller.run();
     }
 }
