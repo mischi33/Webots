@@ -17,34 +17,46 @@ public class ProportionalPushBall extends ProportionalController {
     @Override
     public void run() {
         while (step(TIME_STEP) != -1) {
-            boolean ballFound = false;
-            while (!ballFound && step(TIME_STEP) != -1) {
-                System.out.println("Search Ball.");
-                int red = calcRed();
-                System.out.println("RED: " + red);
-                double left = calcSearchSpeed(red);
-                setSpeedValues(left, 0);
-                System.out.println("LEFT: " + left);
-                if (left <= 0) {
-                    ballFound = true;
-                }
+            findBall();
+            driveToBall();
+            pushBall();
+        }
+    }
+
+    private void findBall() {
+        boolean ballFound = false;
+        while (!ballFound && step(TIME_STEP) != -1) {
+            System.out.println("Search Ball.");
+            int red = calcRed();
+            System.out.println("RED: " + red);
+            double left = calcSearchSpeed(red);
+            setSpeedValues(left, 0);
+            System.out.println("LEFT: " + left);
+            if (left <= 0) {
+                ballFound = true;
             }
-            boolean reachedBall = false;
-            while (!reachedBall && step(TIME_STEP) != -1) {
-                System.out.println("Go to Ball.");
-                double left = calcGoForwardSpeed("ps7");
-                double right = calcGoForwardSpeed("ps0");
-                setSpeedValues(left, right);
-                if (left <= 0 || right <= 0) {
-                    reachedBall = true;
-                }
+        }
+    }
+
+    private void driveToBall() {
+        boolean reachedBall = false;
+        while (!reachedBall && step(TIME_STEP) != -1) {
+            System.out.println("Go to Ball.");
+            double left = calcGoForwardSpeed("ps7");
+            double right = calcGoForwardSpeed("ps0");
+            setSpeedValues(left, right);
+            if (left <= 0 || right <= 0) {
+                reachedBall = true;
             }
-            while (step(TIME_STEP) != -1) {
-                System.out.println("Push Ball.");
-                double right = calcPushSpeed(new String[]{"ps6", "ps7"});
-                double left = calcPushSpeed(new String[]{"ps0", "ps1"});
-                setSpeedValues(left, right);
-            }
+        }
+    }
+
+    private void pushBall() {
+        while (step(TIME_STEP) != -1) {
+            System.out.println("Push Ball.");
+            double right = calcPushSpeed(new String[]{"ps6", "ps7"});
+            double left = calcPushSpeed(new String[]{"ps0", "ps1"});
+            setSpeedValues(left, right);
         }
     }
 
