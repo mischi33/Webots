@@ -1,6 +1,3 @@
-
-import com.cyberbotics.webots.controller.DifferentialWheels;
-
 public abstract class BangBangController extends RobotController {
     protected static int TIME_STEP = 15;
     private static int MAX_SPEED = 800;
