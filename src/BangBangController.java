@@ -3,18 +3,8 @@ import com.cyberbotics.webots.controller.DifferentialWheels;
 
 public abstract class BangBangController extends RobotController {
     protected static int TIME_STEP = 15;
-    protected static int MAX_SPEED = 800;
-    protected static int MIN_SPEED = 0;
-
-    protected static int FRONT_RIGHT = 0;
-    protected static int FRONT_MIDDLE_RIGHT = 1;
-    protected static int RIGHT = 2;
-    protected static int BACK_RIGHT = 3;
-    protected static int BACK_LEFT = 4;
-    protected static int LEFT = 5;
-    protected static int FRONT_MIDDLE_LEFT = 6;
-    protected static int FRONT_LEFT = 7;
-
+    private static int MAX_SPEED = 800;
+    private static int MIN_SPEED = 0;
 
 
 
