@@ -4,7 +4,7 @@ import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class RobotController extends DifferentialWheels {
+public abstract class RobotController extends DifferentialWheels {
     protected LightSensor[] lightSensors;
     protected DistanceSensor[] distanceSensors;
 
@@ -31,4 +31,7 @@ public class RobotController extends DifferentialWheels {
             distanceSensor.enable(10);
         }
     }
+
+
+    public abstract void run();
 }

@@ -1,8 +1,6 @@
-public class BangBangDriveTowardsLightStop extends BangBangController {
+public class BangBangDriveTowardsLightStop extends LightController {
     private static int STOP_VALUE = 350;
     private static int STOP_VALUE_2 = 1500;
-    protected static int MAX_SENSOR_VALUE = 1300;
-    protected static int MAX_FRONT_SENSOR_VALUE = 400;
 
     public BangBangDriveTowardsLightStop(){
         super();
@@ -23,15 +21,8 @@ public class BangBangDriveTowardsLightStop extends BangBangController {
             if ((lightSensors[frontLeft].getValue() < STOP_VALUE || lightSensors[frontRight].getValue() < STOP_VALUE)
                     && (lightSensors[left].getValue() > STOP_VALUE_2 && lightSensors[right].getValue() > STOP_VALUE_2)) {
                 stopDriving();
-            } else if (lightSensors[frontLeft].getValue() < MAX_FRONT_SENSOR_VALUE &&
-                    lightSensors[frontRight].getValue() < MAX_FRONT_SENSOR_VALUE) {
-                driveStraightAhead();
-            } else if (lightSensors[left].getValue() < MAX_SENSOR_VALUE) {
-                driveToLeft();
-            } else if (lightSensors[right].getValue() < MAX_SENSOR_VALUE) {
-                driveToRight();
             } else {
-                driveStraightAhead();
+                driveToLight();
             }
         }
     }
