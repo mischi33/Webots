@@ -19,6 +19,7 @@ public class ProportionalPushBall extends ProportionalController {
         while (step(TIME_STEP) != -1) {
             boolean ballFound = false;
             while (!ballFound && step(TIME_STEP) != -1) {
+                System.out.println("Search Ball.");
                 int red = calcRed();
                 System.out.println("RED: " + red);
                 double left = calcSearchSpeed(red);
@@ -30,8 +31,37 @@ public class ProportionalPushBall extends ProportionalController {
             }
             boolean reachedBall = false;
             while (!reachedBall && step(TIME_STEP) != -1) {
+                System.out.println("Go to Ball.");
+                double left = calcGoForwardSpeed("ps7");
+                double right = calcGoForwardSpeed("ps0");
+                setSpeedValues(left, right);
+                if (left <= 0 || right <= 0) {
+                    reachedBall = true;
+                }
+            }
+            while (step(TIME_STEP) != -1) {
+                System.out.println("Push Ball.");
+                double right = calcPushSpeed(new String[]{"ps6", "ps7"});
+                double left = calcPushSpeed(new String[]{"ps0", "ps1"});
+                setSpeedValues(left, right);
             }
         }
+    }
+
+    private double calcGoForwardSpeed(String name) {
+        double speed = 200.0 - getDistanceSensor(name).getValue();
+        return (speed < 1000) ? speed : 1000;
+    }
+
+    private double calcPushSpeed(String[] sensors) {
+        double speed = 0;
+        for (String sensor : sensors) {
+            speed = speed + getDistanceSensor(sensor).getValue() + 100;
+        }
+        if (speed > 1000) {
+            speed = 1000;
+        }
+        return speed;
     }
 
     private double calcSearchSpeed(int redValue) {
