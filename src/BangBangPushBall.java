@@ -18,7 +18,8 @@ public class BangBangPushBall extends BangBangController {
         while (step(TIME_STEP) != -1) {
             boolean ballFound = false;
             while (!ballFound && step(TIME_STEP) != -1) {
-                driveToRight();
+                System.out.println("Searching Ball.");
+                driveToLeft();
                 int red = calcRed();
                 if (red < 24100) {
                     ballFound = true;
@@ -26,6 +27,7 @@ public class BangBangPushBall extends BangBangController {
             }
             boolean reachedBall = false;
             while (!reachedBall && step(TIME_STEP) != -1) {
+                System.out.println("Go to Ball.");
                 if (getDistanceSensor("ps7").getValue() > 200
                         || getDistanceSensor("ps0").getValue() > 200) {
                     reachedBall = true;
@@ -33,14 +35,13 @@ public class BangBangPushBall extends BangBangController {
                     driveStraightAhead();
                 }
             }
-            boolean lostBall = false;
-            while (!lostBall && step(TIME_STEP) != -1) {
-                int red = calcRed();
+            while (step(TIME_STEP) != -1) {
+                System.out.println("Push Ball.");
                 if (getDistanceSensor("ps7").getValue() > 150 && getDistanceSensor("ps0").getValue() > 150) {
                     driveStraightAhead();
-                } else if (getDistanceSensor("ps0").getValue() < 150) {
+                } else if (getDistanceSensor("ps1").getValue() > 150 || getDistanceSensor("ps0").getValue() > 300) {
                     driveToRight();
-                } else if (getDistanceSensor("ps7").getValue() < 150) {
+                } else if (getDistanceSensor("ps6").getValue() > 150 || getDistanceSensor("ps7").getValue() > 300) {
                     driveToLeft();
                 } else {
                     driveStraightAhead();
