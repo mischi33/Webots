@@ -1,5 +1,3 @@
-import com.cyberbotics.webots.controller.DistanceSensor;
-
 public class BangBangDriveAlongTheWall extends BangBangController {
 
 
@@ -12,13 +10,11 @@ public class BangBangDriveAlongTheWall extends BangBangController {
     private static int FRONT_RIGHT = 0;
     private static int FRONT_MIDDLE_RIGHT = 1;
     private static int RIGHT = 2;
-    private static int FRONT_LEFT = 4;
+    private static int FRONT_LEFT = 3;
 
     public BangBangDriveAlongTheWall() {
         super();
         initDistanceSensors(new String[]{"ps0", "ps1", "ps2", "ps7"});
-
-
     }
 
     public static void main(String[] args) {
