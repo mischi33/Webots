@@ -19,7 +19,7 @@ public class ProportionalPushBall extends RobotController {
         while (step(TIME_STEP) != -1) {
             int red = calcRed();
             double left = calcSpeed(red, new String[]{"ps0", "ps1"});
-            double right = calcSpeed(24700, new String[]{"ps6", "ps7"});
+            double right = calcSpeed(24750, new String[]{"ps6", "ps7"});
             setSpeed(left, right);
         }
     }
