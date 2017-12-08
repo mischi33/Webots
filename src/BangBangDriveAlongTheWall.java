@@ -14,8 +14,7 @@ public class BangBangDriveAlongTheWall extends BangBangController {
     private static int RIGHT = 2;
     private static int FRONT_LEFT = 4;
 
-
-    private DistanceSensor[] distanceSensors;
+    
 
     public BangBangDriveAlongTheWall() {
         super();
