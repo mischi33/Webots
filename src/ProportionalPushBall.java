@@ -29,7 +29,7 @@ public class ProportionalPushBall extends RobotController {
         for (String sensor : sensors) {
             speed = speed + getDistanceSensor(sensor).getValue() + (50 * Math.abs(redValue - 24100) * 0.01);
         }
-        return (speed > 100) ? 1000 : speed;
+        return (speed > 1000) ? 1000 : speed;
     }
 
 
