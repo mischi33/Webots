@@ -1,17 +1,5 @@
 public class BangBangDriveAlongTheWall extends BangBangController {
 
-
-    private static int TURN = 2000;
-    private static int MAX_FRONT_VALUE = 200;
-    private static int MIN_FRONT_SENSOR_VALUE = 60;
-    private static int DRIVE_STRAIGHT_MIN = 1500;
-    private static int DRIVE_STRAIGHT_MAX = 1000;
-
-    private static int FRONT_RIGHT = 0;
-    private static int FRONT_MIDDLE_RIGHT = 1;
-    private static int RIGHT = 2;
-    private static int FRONT_LEFT = 3;
-
     public BangBangDriveAlongTheWall() {
         super();
         initDistanceSensors(new String[]{"ps0", "ps1", "ps2", "ps7"});
@@ -23,29 +11,36 @@ public class BangBangDriveAlongTheWall extends BangBangController {
     }
 
     public void run() {
+        int turn = 2000;
+        int maxFrontValue = 200;
+        int minFrontValue = 60;
+        int driveStraightMin = 1500;
+        int driveStraightMax = 1000;
         boolean atFirstWall = false;
+
+
         while (step(TIME_STEP) != -1) {
             while (step(TIME_STEP) != -1 && !atFirstWall) {
-                if (distanceSensors[FRONT_RIGHT].getValue() < MAX_FRONT_VALUE && distanceSensors[FRONT_LEFT].getValue() < MAX_FRONT_VALUE) {
+                if (getDistanceSensor("ps0").getValue() < maxFrontValue && getDistanceSensor("ps7").getValue() < maxFrontValue) {
                     driveStraightAhead();
-                } else if (distanceSensors[RIGHT].getValue() < TURN) {
-                    while (step(TIME_STEP) != -1 && distanceSensors[RIGHT].getValue() < TURN) {
+                } else if (getDistanceSensor("ps2").getValue() < turn) {
+                    while (step(TIME_STEP) != -1 && getDistanceSensor("ps2").getValue() < turn) {
                         driveToLeft();
                     }
                     atFirstWall = true;
                 }
             }
             while (step(TIME_STEP) != -1) {
-                if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() < DRIVE_STRAIGHT_MAX
-                        && distanceSensors[FRONT_MIDDLE_RIGHT].getValue() > DRIVE_STRAIGHT_MIN
-                        && distanceSensors[FRONT_RIGHT].getValue() < MAX_FRONT_VALUE) {
+                if (getDistanceSensor("ps1").getValue() < driveStraightMax
+                        && getDistanceSensor("ps1").getValue() > driveStraightMin
+                        && getDistanceSensor("ps0").getValue() < maxFrontValue) {
                     driveStraightAhead();
-                } else if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() > DRIVE_STRAIGHT_MIN) {
+                } else if (getDistanceSensor("ps1").getValue() > driveStraightMin) {
                     driveToLeft();
-                } else if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() < DRIVE_STRAIGHT_MAX) {
+                } else if (getDistanceSensor("ps1").getValue() < driveStraightMax) {
                     driveToRight();
                 } else {
-                    while (step(TIME_STEP) != -1 && distanceSensors[FRONT_RIGHT].getValue() > MIN_FRONT_SENSOR_VALUE) {
+                    while (step(TIME_STEP) != -1 && getDistanceSensor("ps0").getValue() > minFrontValue) {
                         driveToLeft();
                     }
                 }

@@ -1,7 +1,5 @@
 public class ProportionalDriveTowardsLightStop extends RobotController {
 
-    private static int MAX_SPEED = 1000;
-
     public ProportionalDriveTowardsLightStop() {
         super();
         initLightSensors(new String[]{"ls6", "ls7", "ls0", "ls1"});
@@ -29,6 +27,6 @@ public class ProportionalDriveTowardsLightStop extends RobotController {
     private double calcSpeed(String name) {
         double speed = 360.0 - getLightSensor(name).getValue();
         speed = speed * 3;
-        return (speed < MAX_SPEED) ? speed : MAX_SPEED;
+        return (speed > 1000) ? 1000 : speed;
     }
 }

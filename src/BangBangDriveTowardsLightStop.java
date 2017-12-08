@@ -1,6 +1,4 @@
 public class BangBangDriveTowardsLightStop extends BangBangLightController {
-    private static int STOP_VALUE = 350;
-    private static int STOP_VALUE_2 = 1500;
 
     public BangBangDriveTowardsLightStop(){
         super();
@@ -13,13 +11,16 @@ public class BangBangDriveTowardsLightStop extends BangBangLightController {
     }
 
     public void run() {
+        int stopValueFront = 350;
+        int stopValueSide = 1500;
         int left = 0;
         int frontLeft = 1;
         int frontRight = 2;
         int right = 3;
+
         while (step(TIME_STEP) != -1) {
-            if ((lightSensors[frontLeft].getValue() < STOP_VALUE || lightSensors[frontRight].getValue() < STOP_VALUE)
-                    && (lightSensors[left].getValue() > STOP_VALUE_2 && lightSensors[right].getValue() > STOP_VALUE_2)) {
+            if ((getLightSensor("ls7").getValue() < stopValueFront || getLightSensor("ls0").getValue() < stopValueFront)
+                    && (getLightSensor("ls6").getValue() > stopValueSide && getLightSensor("ls1").getValue() > stopValueSide)) {
                 stopDriving();
             } else {
                 driveToLight();

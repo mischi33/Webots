@@ -1,18 +1,14 @@
 public abstract class BangBangLightController extends BangBangController {
-    private static int MAX_SENSOR_VALUE = 1300;
-    private static int MAX_FRONT_SENSOR_VALUE = 400;
 
     protected void driveToLight() {
-        int left = 0;
-        int frontLeft = 1;
-        int frontRight = 2;
-        int right = 3;
-        if (lightSensors[frontLeft].getValue() < MAX_FRONT_SENSOR_VALUE &&
-                lightSensors[frontRight].getValue() < MAX_FRONT_SENSOR_VALUE) {
+        int maxFrontSensorValue = 400;
+        int maxSideSensorValue = 1300;
+        if (getLightSensor("ls7").getValue() < maxFrontSensorValue &&
+                getLightSensor("ls0").getValue() < maxFrontSensorValue) {
             driveStraightAhead();
-        } else if (lightSensors[left].getValue() < MAX_SENSOR_VALUE) {
+        } else if (getLightSensor("ls6").getValue() < maxSideSensorValue) {
             driveToLeft();
-        } else if (lightSensors[right].getValue() < MAX_SENSOR_VALUE) {
+        } else if (getLightSensor("ls1").getValue() < maxSideSensorValue) {
             driveToRight();
         } else {
             driveStraightAhead();

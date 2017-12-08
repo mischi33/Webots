@@ -4,7 +4,6 @@ public abstract class BangBangController extends RobotController {
     private static int MIN_SPEED = 0;
 
 
-
     protected void stopDriving() {
         setSpeed(MIN_SPEED, MIN_SPEED);
     }
