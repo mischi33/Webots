@@ -14,11 +14,9 @@ public class BangBangDriveAlongTheWall extends BangBangController {
     private static int RIGHT = 2;
     private static int FRONT_LEFT = 4;
 
-    
-
     public BangBangDriveAlongTheWall() {
         super();
-        initDistanceSensors(new String[]{"ps0","ps1","ps2","ps7"});
+        initDistanceSensors(new String[]{"ps0", "ps1", "ps2", "ps7"});
 
 
     }
@@ -42,7 +40,9 @@ public class BangBangDriveAlongTheWall extends BangBangController {
                 }
             }
             while (step(TIME_STEP) != -1) {
-                if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() < DRIVE_STRAIGHT_MAX && distanceSensors[FRONT_MIDDLE_RIGHT].getValue() > DRIVE_STRAIGHT_MIN && distanceSensors[FRONT_RIGHT].getValue() < MAX_FRONT_VALUE) {
+                if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() < DRIVE_STRAIGHT_MAX
+                        && distanceSensors[FRONT_MIDDLE_RIGHT].getValue() > DRIVE_STRAIGHT_MIN
+                        && distanceSensors[FRONT_RIGHT].getValue() < MAX_FRONT_VALUE) {
                     driveStraightAhead();
                 } else if (distanceSensors[FRONT_MIDDLE_RIGHT].getValue() > DRIVE_STRAIGHT_MIN) {
                     driveToLeft();

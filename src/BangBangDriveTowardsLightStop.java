@@ -1,4 +1,4 @@
-public class BangBangDriveTowardsLightStop extends LightController {
+public class BangBangDriveTowardsLightStop extends BangBangLightController {
     private static int STOP_VALUE = 350;
     private static int STOP_VALUE_2 = 1500;
 

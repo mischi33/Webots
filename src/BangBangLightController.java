@@ -1,4 +1,4 @@
-public abstract class LightController extends BangBangController {
+public abstract class BangBangLightController extends BangBangController {
     private static int MAX_SENSOR_VALUE = 1300;
     private static int MAX_FRONT_SENSOR_VALUE = 400;
 

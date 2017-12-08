@@ -1,4 +1,4 @@
-public class BangBangDriveTowardsLight extends LightController {
+public class BangBangDriveTowardsLight extends BangBangLightController {
 
 
     public BangBangDriveTowardsLight(){
