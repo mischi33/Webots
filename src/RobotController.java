@@ -5,13 +5,10 @@ import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
 public abstract class RobotController extends DifferentialWheels {
-    protected LightSensor[] lightSensors;
-    protected DistanceSensor[] distanceSensors;
-
     protected static int TIME_STEP = 15;
 
     protected void initLightSensors(String[] sensorNames) {
-        lightSensors = new LightSensor[sensorNames.length];
+        LightSensor[] lightSensors = new LightSensor[sensorNames.length];
         for (int i = 0; i < sensorNames.length; i++) {
             lightSensors[i] = getLightSensor(sensorNames[i]);
         }
@@ -22,7 +19,7 @@ public abstract class RobotController extends DifferentialWheels {
     }
 
     protected void initDistanceSensors(String[] sensorNames) {
-        distanceSensors = new DistanceSensor[sensorNames.length];
+        DistanceSensor[] distanceSensors = new DistanceSensor[sensorNames.length];
         for (int i = 0; i < sensorNames.length; i++) {
             distanceSensors[i] = getDistanceSensor(sensorNames[i]);
         }
@@ -31,7 +28,6 @@ public abstract class RobotController extends DifferentialWheels {
             distanceSensor.enable(10);
         }
     }
-
 
     public abstract void run();
 }
