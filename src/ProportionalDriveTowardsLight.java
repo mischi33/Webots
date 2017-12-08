@@ -1,4 +1,4 @@
-public class ProportionalDriveTowardsLight extends ProportionalController {
+public class ProportionalDriveTowardsLight extends RobotController {
 
 
     private static double controllerValue = 0.5;
@@ -14,7 +14,7 @@ public class ProportionalDriveTowardsLight extends ProportionalController {
         while (step(TIME_STEP) != -1) {
             double left = calcSpeed(new String[] {"ls6", "ls7"});
             double right = calcSpeed(new String[] {"ls0", "ls1"});
-            setSpeedValues(left, right);
+            setSpeed(left, right);
         }
 
     }
