@@ -1,5 +1,4 @@
 public abstract class BangBangController extends RobotController {
-    protected static int TIME_STEP = 15;
     private static int MAX_SPEED = 800;
     private static int MIN_SPEED = 0;
 

@@ -14,13 +14,9 @@ public class ProportionalDriveTowardsLightStop extends RobotController {
         while (step(TIME_STEP) != -1) {
             double right = calcSpeed("ls7");
             double left = calcSpeed("ls0");
-            setSpeedValues(left, right);
+            setSpeed(left, right);
         }
 
-    }
-
-    private void setSpeedValues(double left, double right) {
-        setSpeed(left, right);
     }
 
 

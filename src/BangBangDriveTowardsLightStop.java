@@ -13,10 +13,7 @@ public class BangBangDriveTowardsLightStop extends BangBangLightController {
     public void run() {
         int stopValueFront = 350;
         int stopValueSide = 1500;
-        int left = 0;
-        int frontLeft = 1;
-        int frontRight = 2;
-        int right = 3;
+
 
         while (step(TIME_STEP) != -1) {
             if ((getLightSensor("ls7").getValue() < stopValueFront || getLightSensor("ls0").getValue() < stopValueFront)
